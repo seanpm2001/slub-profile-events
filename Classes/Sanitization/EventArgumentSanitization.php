@@ -24,15 +24,15 @@ class EventArgumentSanitization
     public function sanitizeDefaultArguments(array $arguments): array
     {
         if (count($arguments) > 0) {
-            $this->sanitizeCommaSeparatedStringIds('category', $arguments['category']);
-            $this->sanitizeCommaSeparatedStringIds('discipline', $arguments['discipline']);
-            $this->sanitizeCommaSeparatedStringIds('contact', $arguments['contact']);
-            $this->sanitizeChecked('showPastEvents', $arguments['showPastEvents']);
-            $this->sanitizeChecked('showEventsFromNow', $arguments['showEventsFromNow']);
-            $this->sanitizeInteger('limitByNextWeeks', $arguments['limitByNextWeeks']);
-            $this->sanitizeStartAndStopTimestamp($arguments['startTimestamp'], $arguments['stopTimestamp']);
-            $this->sanitizeSorting('sorting', $arguments['sorting']);
-            $this->sanitizeInteger('limit', $arguments['limit']);
+            $this->sanitizeCommaSeparatedStringIds('category', $arguments['category'] ?? '');
+            $this->sanitizeCommaSeparatedStringIds('discipline', $arguments['discipline'] ?? '');
+            $this->sanitizeCommaSeparatedStringIds('contact', $arguments['contact'] ?? '');
+            $this->sanitizeChecked('showPastEvents', $arguments['showPastEvents'] ?? '');
+            $this->sanitizeChecked('showEventsFromNow', $arguments['showEventsFromNow'] ?? '');
+            $this->sanitizeInteger('limitByNextWeeks', $arguments['limitByNextWeeks'] ?? '');
+            $this->sanitizeStartAndStopTimestamp($arguments['startTimestamp'] ?? '', $arguments['stopTimestamp'] ?? '');
+            $this->sanitizeSorting('sorting', $arguments['sorting'] ?? '');
+            $this->sanitizeInteger('limit', $arguments['limit'] ?? '');
         }
 
         return $this->sanitizedArguments;
